@@ -4,7 +4,7 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "Author",
+    "displayName": "Autores",
     "description": "Create authors for your content"
   },
   "options": {
@@ -13,22 +13,31 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "avatar": {
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "articles": {
+    "noticias": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "author"
+      "target": "api::new.new",
+      "mappedBy": "autor"
+    },
+    "juridico": {
+      "type": "uid",
+      "required": true
     }
   }
 }

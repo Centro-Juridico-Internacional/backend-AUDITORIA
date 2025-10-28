@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entrevistas_urls",
+  "info": {
+    "singularName": "entrevistas-url",
+    "pluralName": "entrevistas-urls",
+    "displayName": "EntrevistasUrl"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "UrlEntrevista": {
+      "type": "string",
+      "minLength": 2,
+      "required": true
+    }
+  }
+}

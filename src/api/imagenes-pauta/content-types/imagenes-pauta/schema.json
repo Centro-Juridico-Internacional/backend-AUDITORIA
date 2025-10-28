@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "imagenes_pautas",
+  "info": {
+    "singularName": "imagenes-pauta",
+    "pluralName": "imagenes-pautas",
+    "displayName": "ImagenesPauta"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

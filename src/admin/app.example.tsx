@@ -1,14 +1,14 @@
-import type { StrapiApp } from '@strapi/strapi/admin';
+import type { StrapiApp } from "@strapi/strapi/admin";
 
 export default {
   config: {
     locales: [
-      // 'ar',
+      // "ar",
       // 'fr',
       // 'cs',
       // 'de',
       // 'dk',
-      // 'es',
+      // "es",
       // 'he',
       // 'id',
       // 'it',

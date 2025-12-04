@@ -401,6 +401,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     noticias: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
     publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -435,6 +436,37 @@ export interface ApiBannerBanner extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBannersEventoBannersEvento
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'banners_eventos';
+  info: {
+    displayName: 'BannersEvento';
+    pluralName: 'banners-eventos';
+    singularName: 'banners-evento';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banners: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::banners-evento.banners-evento'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'UrlEvento'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    UrlEvento: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1086,6 +1118,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
       'api::banner.banner': ApiBannerBanner;
+      'api::banners-evento.banners-evento': ApiBannersEventoBannersEvento;
       'api::category.category': ApiCategoryCategory;
       'api::entrevistas-url.entrevistas-url': ApiEntrevistasUrlEntrevistasUrl;
       'api::imagenes-pauta.imagenes-pauta': ApiImagenesPautaImagenesPauta;

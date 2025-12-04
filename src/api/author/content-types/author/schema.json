@@ -38,6 +38,11 @@
     "juridico": {
       "type": "uid",
       "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true,
+      "unique": false
     }
   }
 }

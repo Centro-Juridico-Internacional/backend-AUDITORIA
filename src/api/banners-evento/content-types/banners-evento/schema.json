@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banners_eventos",
+  "info": {
+    "singularName": "banners-evento",
+    "pluralName": "banners-eventos",
+    "displayName": "BannersEvento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Banners": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "UrlEvento": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "UrlEvento",
+      "required": true
+    }
+  }
+}

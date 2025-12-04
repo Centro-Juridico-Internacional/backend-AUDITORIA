@@ -387,6 +387,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   attributes: {
     avatar: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
+    cargo: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -401,7 +402,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     noticias: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
     publishedAt: Schema.Attribute.DateTime;
-    role: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

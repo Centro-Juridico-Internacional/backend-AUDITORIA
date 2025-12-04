@@ -39,7 +39,7 @@
       "type": "uid",
       "required": true
     },
-    "role": {
+    "cargo": {
       "type": "string",
       "required": true,
       "unique": false

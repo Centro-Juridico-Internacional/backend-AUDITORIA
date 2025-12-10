@@ -261,5 +261,24 @@ export default {
       }
     `;
     document.head.appendChild(style);
+
+    // Center "Bienvenido" text specifically on Login screen
+    // Using JS to avoid affecting other elements with the same class
+    const observer = new MutationObserver(() => {
+      const titles = document.querySelectorAll(
+        ".sc-bRKDuR.bCZExY.sc-fhHczv.iFLKyI"
+      );
+      titles.forEach((el) => {
+        if (
+          el instanceof HTMLElement &&
+          el.innerText.includes("Bienvenido al Panel de Administración")
+        ) {
+          el.style.textAlign = "center";
+          el.style.display = "block"; // Ensure it takes full width
+          el.style.width = "100%";
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   },
 };

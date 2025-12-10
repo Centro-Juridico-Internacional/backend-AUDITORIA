@@ -263,18 +263,23 @@ export default {
     document.head.appendChild(style);
 
     // Center "Bienvenido" text specifically on Login screen
-    // Using JS to avoid affecting other elements with the same class
+    // Performance Optimized: Only runs on auth pages, checks headers only
     const observer = new MutationObserver(() => {
-      const titles = document.querySelectorAll(
-        ".sc-bRKDuR.bCZExY.sc-fhHczv.iFLKyI"
-      );
-      titles.forEach((el) => {
+      // 1. Optimization: Only run on auth pages
+      if (!window.location.href.includes("/auth/")) return;
+
+      const targetText = "Bienvenido al Panel de Administración";
+      // 2. Optimization: Restrict scan to Headers (H1/H2) only
+      const candidates = document.querySelectorAll("h1, h2");
+
+      candidates.forEach((el) => {
         if (
           el instanceof HTMLElement &&
-          el.innerText.includes("Bienvenido al Panel de Administración")
+          el.innerText.trim() === targetText &&
+          el.style.textAlign !== "center" // 3. Optimization: Avoid redundant DOM writes
         ) {
           el.style.textAlign = "center";
-          el.style.display = "block"; // Ensure it takes full width
+          el.style.display = "block";
           el.style.width = "100%";
         }
       });

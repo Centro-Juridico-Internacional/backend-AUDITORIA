@@ -37,6 +37,7 @@
     },
     "juridico": {
       "type": "uid",
+      "targetField": "name",
       "required": true
     },
     "cargo": {

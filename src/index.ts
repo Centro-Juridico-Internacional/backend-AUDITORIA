@@ -1,26 +1,20 @@
+// import type { Core } from '@strapi/strapi';
+
 export default {
-  register() {},
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/* { strapi }: { strapi: Core.Strapi } */) {},
 
-  async bootstrap({ strapi }) {
-    /**
-     * Limpia la cache interna de email templates
-     * para asegurar que Strapi use lo editado en el Admin
-     */
-    try {
-      const templates = await strapi.db
-        .query("plugin::users-permissions.email-template")
-        .findMany();
-
-      for (const template of templates) {
-        await strapi.db
-          .query("plugin::users-permissions.email-template")
-          .update({
-            where: { id: template.id },
-            data: { updatedAt: new Date() },
-          });
-      }
-    } catch (err) {
-      // Silencioso: no rompe el arranque
-    }
-  },
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
 };

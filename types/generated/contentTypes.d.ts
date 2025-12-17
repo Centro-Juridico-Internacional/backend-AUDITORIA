@@ -699,6 +699,38 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRevistaPdfRevistaPdf extends Struct.CollectionTypeSchema {
+  collectionName: 'revista_pdfs';
+  info: {
+    displayName: 'RevistaPdf';
+    pluralName: 'revista-pdfs';
+    singularName: 'revista-pdf';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::revista-pdf.revista-pdf'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Revista: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    Slug: Schema.Attribute.UID<'Titulo'> & Schema.Attribute.Required;
+    Titulo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Revista del mes'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1216,6 +1248,7 @@ declare module '@strapi/strapi' {
       'api::entrevistas-url.entrevistas-url': ApiEntrevistasUrlEntrevistasUrl;
       'api::imagenes-pauta.imagenes-pauta': ApiImagenesPautaImagenesPauta;
       'api::new.new': ApiNewNew;
+      'api::revista-pdf.revista-pdf': ApiRevistaPdfRevistaPdf;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

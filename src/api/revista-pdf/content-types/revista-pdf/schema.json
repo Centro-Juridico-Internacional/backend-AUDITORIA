@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "revista_pdfs",
+  "info": {
+    "singularName": "revista-pdf",
+    "pluralName": "revista-pdfs",
+    "displayName": "RevistaPdf"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Revista": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "Titulo": {
+      "type": "string",
+      "default": "Revista del mes",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Titulo",
+      "required": true
+    }
+  }
+}

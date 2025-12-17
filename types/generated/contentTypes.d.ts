@@ -527,6 +527,40 @@ export interface ApiBannersEventoBannersEvento
   };
 }
 
+export interface ApiCapsulasLegalesUrlCapsulasLegalesUrl
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'capsulas_legales_urls';
+  info: {
+    displayName: 'CapsulasLegalesUrl';
+    pluralName: 'capsulas-legales-urls';
+    singularName: 'capsulas-legales-url';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::capsulas-legales-url.capsulas-legales-url'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    UrlCapsulaLegal: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -1177,6 +1211,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::banner.banner': ApiBannerBanner;
       'api::banners-evento.banners-evento': ApiBannersEventoBannersEvento;
+      'api::capsulas-legales-url.capsulas-legales-url': ApiCapsulasLegalesUrlCapsulasLegalesUrl;
       'api::category.category': ApiCategoryCategory;
       'api::entrevistas-url.entrevistas-url': ApiEntrevistasUrlEntrevistasUrl;
       'api::imagenes-pauta.imagenes-pauta': ApiImagenesPautaImagenesPauta;

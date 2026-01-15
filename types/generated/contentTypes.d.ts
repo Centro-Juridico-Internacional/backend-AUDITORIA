@@ -479,7 +479,7 @@ export interface ApiBannerBanner extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    imagen: Schema.Attribute.Media<'images' | 'files'> &
+    imagen: Schema.Attribute.Media<'images' | 'files', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

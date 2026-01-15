@@ -676,7 +676,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::category.category'
     >;
-    contenido: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    contenido: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

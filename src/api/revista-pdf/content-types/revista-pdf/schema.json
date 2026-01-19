@@ -19,6 +19,14 @@
         "files"
       ]
     },
+    "Portada": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "Titulo": {
       "type": "string",
       "default": "Revista del mes",

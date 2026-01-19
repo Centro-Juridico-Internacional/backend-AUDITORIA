@@ -719,6 +719,7 @@ export interface ApiRevistaPdfRevistaPdf extends Struct.CollectionTypeSchema {
       'api::revista-pdf.revista-pdf'
     > &
       Schema.Attribute.Private;
+    Portada: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Revista: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
     Slug: Schema.Attribute.UID<'Titulo'> & Schema.Attribute.Required;
